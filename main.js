@@ -28,4 +28,44 @@ for (const value of producto){
     console.log(value);
 }
 
+let divticket =document.createElement("div");
+divticket.id= 'divticket';
+document.body.appendChild(divticket)
+
+
+
+
+
+let botonCargar = document.getElementById("botonCargar")
+
+botonCargar.addEventListener ("click", () => {
+    console.log ("Lorem")
+}
+ )
+
+
+
+console.log (document)
+
+document.querySelector('h1').textContent = 'Cambio texto desde JS'
+
+
+console.log ( document.querySelector('h1'))
+
+
+
+
+
+let divClases = document.getElementById("random")
+
+let parrafo = document.createElement ("p")
+
+parrafo.className ="People"
+parrafo.innerHTML = "Esto es una prueba"
+
+
+divClases.appendChild (parrafo)
+
+
+
 
