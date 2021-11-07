@@ -39,6 +39,7 @@ document.body.appendChild(divticket)
 let botonCargar = document.getElementById("botonCargar")
 
 botonCargar.addEventListener ("click", () => {
+    document.querySelector('h1').textContent = 'Cambio texto desde JS'
     console.log ("Lorem")
 }
  )
@@ -47,7 +48,7 @@ botonCargar.addEventListener ("click", () => {
 
 console.log (document)
 
-document.querySelector('h1').textContent = 'Cambio texto desde JS'
+
 
 
 console.log ( document.querySelector('h1'))
