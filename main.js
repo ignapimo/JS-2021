@@ -39,11 +39,15 @@ document.body.appendChild(divticket)
 let botonCargar = document.getElementById("botonCargar")
 
 botonCargar.addEventListener ("click", () => {
-    document.querySelector('h1').textContent = 'Cambio texto desde JS'
-    console.log ("Lorem")
+    document.querySelector('h1').textContent = 'Welcome'
 }
  )
 
+ botonCargar.createElement ("click", () => {
+    document.querySelector('h1').textContent = 'Welcome'
+    console.log ("Lorem")
+}
+ )
 
 
 console.log (document)
@@ -69,4 +73,16 @@ divClases.appendChild (parrafo)
 
 
 
+
+const imprimirDatos = () => {
+    verificarStorage().forEach(obj => {
+        document.getElementById("lista").innerHTML +=`
+        <tr>
+            <td>${obj.id} </td>
+            <td>${obj.nombre} </td>
+            <td>${obj.marca} </td>
+            <td>${obj.stock} </td>
+        </tr>
+        `
+} )}
 

@@ -5,21 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto</title>
+    <link rel="stylesheet" href="maincss.css">
 </head>
 <body>
     
 
     <h1>Productos</h1>
 
+
+
     
     <button id="botonCargar">Cambiar texto desde JS</button>
 
-    <ul id="lista">
-        <li>Item1</li>
-        <li>Item2</li>
-        <li>Item3</li>
+    <br><br>
+    <table>
+
+    <tr id="lista">
+        <td>Id</td>
+        <td>Nombre</td>
+        <td>Marca</td>
+        <td>Stock</td>
         
-    </ul>
+    </tr>
+</table>
+    <form action="" id="formulario">
+        <input type="text" id="id" placeholder="Id del producto" autocomplete="off">
+        <input type="text" id="Nombre" placeholder="Nombre del producto" autocomplete="off">
+        <input type="text" id="Marca" placeholder="Marca del producto" autocomplete="off">
+        <input type="text" id="Stock" placeholder="Stock del producto" autocomplete="off">
+
+        <button id="btnSave">Guardar</button>
+    </form>
 
     <div class="parrafo">
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque nulla repellendus eos id quos fugiat 
