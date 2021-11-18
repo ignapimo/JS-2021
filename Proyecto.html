@@ -11,6 +11,7 @@
 <body>
     <script src="jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 
     <nav class="navbar navbar-light bg-light fixed-top">
         <div class="container-fluid">
@@ -64,25 +65,28 @@
     <br><br>
     <table>
 
-    <tr id="lista">
-        <td>Id</td>
-        <td>Nombre</td>
-        <td>Marca</td>
-        <td>Stock</td>
-        
-    </tr>
+  
 </table>
     <form action="" id="formulario">
-        <input type="text" id="id" placeholder="Id del producto" autocomplete="off">
         <input type="text" id="Nombre" placeholder="Nombre del producto" autocomplete="off">
         <input type="text" id="Marca" placeholder="Marca del producto" autocomplete="off">
-        <input type="text" id="Stock" placeholder="Stock del producto" autocomplete="off">
 
-        <button id="btnSave">Guardar</button>
+        <button id="btnSave">Buscar</button>
     </form>
     <div class="container">
 
       <main class="container d-flex">
+
+        <div class="container">
+          <select class="form-select" aria-label="Default select example" id="filtrar"></select>
+          <option selected="">Filtrar por categoria</option>
+          <option value="">Samsung</option>
+          <option value="">Apple</option>
+          <option value="">LG</option>
+          <option value="">Sony</option>
+
+
+        </div>
       <div class="container col-8 d-flex flex-wrap justify-content-around" id="contenedorProductos"></div>
 
     <table class="table">
@@ -95,18 +99,6 @@
           </tr>
         </thead>
         <tbody class="col-4" id="contenedorCarrito">
-       
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
         </tbody>
       </table>
     </div>
