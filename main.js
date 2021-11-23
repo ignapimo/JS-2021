@@ -1,9 +1,9 @@
 const productos = [
-    {ID: 5657, nombre: "Galaxy note 20 ultra", marca :"Samsung", stock: 10, img:"/images/note20.jpg"},
-    {ID: 6895, nombre: "Iphone X ", marca :"Apple", stock: 30, img:"/images/iphone.jpg"},
-    {ID: 7523, nombre: "TV 50' Ultra LED", marca :"LG", stock: 5, img:"/images/lg.jpg"},
-    {ID: 4135, nombre: "Smart watch 20' ", marca :"Samsung", stock: 7, img:"/images/watch.jpg"},
-    {ID: 2745, nombre: "Auriculares boost ", marca :"Sony", stock: 15, img:"/images/auri.jpg"},
+    {id: 5657, nombre: "Galaxy note 20 ultra", marca :"Samsung", stock: 10, img:"/images/note20.jpg",precio: 800},
+    {id: 6895, nombre: "Iphone X ", marca :"Apple", stock: 30, img:"/images/iphone.jpg", precio: 1000},
+    {id: 7523, nombre: "TV 50' Ultra LED", marca :"LG", stock: 5, img:"/images/lg.webp",precio: 1200},
+    {id: 4135, nombre: "Smart watch 20' ", marca :"Samsung", stock: 7, img:"/images/watch.jpg", precio: 300},
+    {id: 2745, nombre: "Auriculares boost ", marca :"Sony", stock: 15, img:"/images/auri.jpg", precio: 200},
 
 ];
 
@@ -35,11 +35,12 @@ function mostrarProd(array) {
     for (e of array){
         contenedorProd.innerHTML+=`
         <div class="card col-2" style="width: 9rem;">
-  <img src="${e.image}" class="card-img-top" alt="...">
+  <img src="${e.img}" class="card-img-top" alt="...">
   <div class="card-body">
   <h5 class="card-title">${e.nombre}</h5>
   <p class="card-text">${e.marca}</p>
   <h5 class="card-title">${e.stock}</h5>
+  <h5 class="card-title">${e.precio}</h5>
     <button class="btn btn-primary" onclick="capturar(${e.id})">Agregar</button>
   </div>
 </div>
@@ -54,11 +55,12 @@ function mostrarCarrito(array){
         contenedorCarrito.innerHTML+=`
         <tr>
         <th scope="row">${i++}</th>
-        <td>${e.ID}</td>
+        <td>${e.id}</td>
         <td>${e.nombre}</td>
         <td>${e.marca}</td>
         <td>${e.stock}</td>
-        <td><button class="btn btn-danger" onclick="quitar${e.ID}">X</button></td>
+        <td>${e.precio}</td>
+        <td><button class="btn btn-danger" onclick="quitar(${e.id})">X</button></td>
       </tr>`
     }
     contenedorCarrito.innerHTML+=`
@@ -81,9 +83,10 @@ function guardarStorage(array){
 }
 
 function capturar(id){
-    let prodcutoSeleccionado= productos.find(e => e.id == id);
+    let productoSeleccionado= productos.find(e => e.id == id);
     guardarStorage(agregarStorage(productoSeleccionado));
     mostrarCarrito(JSON.parse(localStorage.getItem("carrito")));
+    sumarProductos();
 }
 
 function quitar(id) {
@@ -100,22 +103,24 @@ function sumarProductos (){
     for (e of productosCarrito){
         suma += e.precio
     }
-let total=document.querySelector("#totalCarrito").textContent=suma;
+    let total =document.querySelector("#totalCarrito").textContent=suma;
 }
 
+function filtrar(array, dato){
+    return array.filter(e=> e.marca == dato);
+}
 
 
 mostrarProd(productos);
 
 if (localStorage.getItem("carrito")){
     mostrarCarrito(JSON.parse(localStorage.getItem("carrito")));
-    sumarCarrito(JSON.parse(localStorage.getItem("carrito")));
+    sumarProductos(JSON.parse(localStorage.getItem("carrito")));
 }
 
-document.querySelector("#filtrar").addEventListener("change",(e)=>{
-    e.marca.value !="" ? mostrarProd(filtrar(productos, e.marca.value)) : mostrarProd(prodcutos);
-})
-
+document.querySelector("#filtrar").addEventListener("change",(e)=>{    
+    e.target.value !=" " ?  mostrarProd(filtrar(productos, e.target.value)) : mostrarProd(productos);
+});
 
 
 
@@ -164,3 +169,15 @@ const imprimirDatos = () => {
         </tr>
         `
 } )}
+
+$(() => {
+    $("#botonCargar").on("click", function(){
+        $("#box").toggle("slow", function(){
+            $("html, body").animate( {
+                scrollTop: $("#divCorrido").offset().top
+            })
+        });
+    })}
+
+)
+
