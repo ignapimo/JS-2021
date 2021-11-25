@@ -142,20 +142,9 @@ botonCargar.addEventListener ("click", () => {
 }
  )
 
-console.log ( document.querySelector('h1'))
 
 
-let divClases = document.getElementById("random")
-
-
-
-
-$("#formulario").on("submit", function(e){
-    console.log(formulariod
-        );
-})
-
-
+let divClases = document.getElementById("random");
 
 
 const imprimirDatos = () => {
@@ -170,14 +159,106 @@ const imprimirDatos = () => {
         `
 } )}
 
-$(() => {
-    $("#botonCargar").on("click", function(){
-        $("#box").toggle("slow", function(){
-            $("html, body").animate( {
-                scrollTop: $("#divCorrido").offset().top
-            })
-        });
-    })}
 
-)
 
+$("#botonCargar").on("click", function(){
+    $("#box").show("slow", function(){
+        $("#botonCargar").on("click", function(){
+            $("#box").hide("slow");   
+    });
+});
+})
+
+
+
+
+    let sendUrl = $("#formulario").attr("action");
+    let metodo =  $("#formulario").attr("method");
+    let nombre;
+    let mail;
+    let msj;
+
+    $("#send").on("click", function(e){
+        e.preventDefault();
+        $.ajax({
+            beforeSend:function(){
+                $("#status").text("Enviado");
+                nombre = $("#nombre").val();
+                mail = $("#mail").val();
+                msj = $("#mensaje").val();
+            },
+            url:sendUrl,
+            type: metodo,
+            data: {name: nombre, email: mail, mensaje:msj},
+            success:function(resp){
+                console.log(resp);
+            },
+            error: function(jqXHL,status,resp){
+                console.log(status);
+                console.log(resp);
+            }
+        })
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // $(() => {
+//     $("#botonCargar").on("click", function(){
+//         $("#box").toggle("slow", function(){
+//             $("html, body").animate( {
+//                 scrollTop: $("#divCorrido").offset().top
+//             })
+//         });
+//     })}
+
+// )
